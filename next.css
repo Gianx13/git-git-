@@ -1,0 +1,45 @@
+body {
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.lista-projetos {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.projeto {
+    display: flex;
+    align-items: center;
+    background: #1b1b1b;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    border: 1px solid #333;
+}
+
+.projeto:hover {
+    background: #2a2a2a;
+    transform: translateX(5px);
+}
+
+.icone {
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+.nome {
+    font-size: 18px;
+}

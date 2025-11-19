@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Gianmario Galdino Urbini</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    
+    <header>
+        <h1>Gianmario Galdino Urbini</h1>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    
+    <section id="sobre" class="sec">
+        <h2>Sobre Mim</h2>
+        <p>
+            Olá! Sou o Gianmario, desenvolvedor iniciante e apaixonado por tecnologia.
+            Atualmente estudo programação e busco minha primeira oportunidade na área de desenvolvimento.
+            Estou sempre evoluindo minhas habilidades e criando novos projetos.
+        </p>
+    </section>
+
+    
+    <section id="habilidades" class="sec">
+    <h2>Projetos</h2>
+    <ul class="skills">
+        <li><a href="next.html" class="skill-btn">HTML</a></li>
+        <li><a href="prox.html" class="skill-btn">JavaScript</a></li>
+        <li><a href="git-projects.html" class="skill-btn">Git & GitHub</a></li>
+    </ul>
+</section>
+
+<section id="contato" class="sec">
+    <h2>Contato</h2>
+
+   <form class="contact-form" onsubmit="enviarEmail(event)">
+    
+
+    <input type="text" name="name" placeholder="Seu nome" required>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <textarea name="message" placeholder="Escreva sua mensagem..." required></textarea>
+
+    <button type="submit">Enviar Mensagem</button>
+</form>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  (function(){
+      emailjs.init("9I3pVEuTWClAZwtV9");
+  })();
+
+  function enviarEmail(event) {
+    event.preventDefault(); 
+    emailjs.send("service_o0eo82k", "template_p96nv8c", {
+        name: document.querySelector("input[name='name']").value,
+        email: document.querySelector("input[name='email']").value,
+        message: document.querySelector("textarea[name='message']").value
+    })
+    .then(function(response) {
+        alert("Mensagem enviada com sucesso! 🎉");
+        document.querySelector(".contact-form").reset();
+    }, function(error) {
+        alert("Erro ao enviar. Tente novamente!");
+        console.log(error);
+    });
+  }
+</script>
+
+
+</body>
+</html>
