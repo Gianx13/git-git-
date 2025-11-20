@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show do Milhão - Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #222, #111);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .quiz-container {
+      background: #000;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px yellow;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    h2 {
+      color: yellow;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    button {
+      margin: 10px 0;
+      padding: 15px;
+      width: 100%;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: #333;
+      color: #fff;
+      transition: 0.3s;
+    }
+    button:hover { background: #555; }
+    .correct { background-color: green; }
+    .wrong { background-color: red; }
+    #lifelines {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .lifeline {
+      background: gold;
+      color: black;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2 id="question">Pergunta vai aqui</h2>
+
+    <div id="lifelines">
+      <div class="lifeline" id="fifty">50:50</div>
+      <div class="lifeline" id="audience">Plateia</div>
+      <div class="lifeline" id="phone">Telefone</div>
+    </div>
+
+    <div id="answers"></div>
+    <p id="score"></p>
+    <button id="nextBtn" style="display:none;">Próxima</button>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: 'Qual é a capital do Brasil?',
+        answers: ['Rio de Janeiro', 'Brasília', 'São Paulo', 'Salvador'],
+        correct: 'Brasília'
+      },
+      {
+        question: 'Quem pintou a Mona Lisa?',
+        answers: ['Van Gogh', 'Leonardo da Vinci', 'Picasso', 'Michelangelo'],
+        correct: 'Leonardo da Vinci'
+      },
+      {
+        question: 'Qual planeta é conhecido como Planeta Vermelho?',
+        answers: ['Marte', 'Júpiter', 'Saturno', 'Vênus'],
+        correct: 'Marte'
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const answersEl = document.getElementById('answers');
+    const nextBtn = document.getElementById('nextBtn');
+    const scoreEl = document.getElementById('score');
+
+    const fiftyBtn = document.getElementById('fifty');
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      answersEl.innerHTML = '';
+      scoreEl.textContent = '';
+      nextBtn.style.display = 'none';
+
+      q.answers.forEach(answer => {
+        const btn = document.createElement('button');
+        btn.textContent = answer;
+        btn.addEventListener('click', () => checkAnswer(answer, btn));
+        answersEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(answer, btn) {
+      const correctAnswer = quizData[currentQuestion].correct;
+      if(answer === correctAnswer){
+        btn.classList.add('correct');
+        score++;
+      } else {
+        btn.classList.add('wrong');
+        Array.from(answersEl.children).forEach(b => {
+          if(b.textContent === correctAnswer){
+            b.classList.add('correct');
+          }
+        });
+      }
+      Array.from(answersEl.children).forEach(b => b.disabled = true);
+      nextBtn.style.display = 'block';
+    }
+
+    nextBtn.addEventListener('click', () => {
+      currentQuestion++;
+      if(currentQuestion < quizData.length){
+        loadQuestion();
+      } else {
+        questionEl.textContent = 'Fim do Quiz!';
+        answersEl.innerHTML = '';
+        scoreEl.textContent = `Sua pontuação: ${score} / ${quizData.length}`;
+        nextBtn.style.display = 'none';
+      }
+    });
+
+    fiftyBtn.addEventListener('click', () => {
+      const q = quizData[currentQuestion];
+      let removed = 0;
+      Array.from(answersEl.children).forEach(btn => {
+        if(btn.textContent !== q.correct && removed < 2){
+          btn.style.display = 'none';
+          removed++;
+        }
+      });
+      fiftyBtn.disabled = true;
+    });
+
+    loadQuestion();
+  </script>
+</body>
+</html>
