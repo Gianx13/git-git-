@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante do Gian</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: #d82d2d;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* Container do cardápio */
+        .menu-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 40px;
+            font-size: 26px;
+            border-left: 6px solid #d82d2d;
+            padding-left: 10px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            height: 170px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .card .title {
+            margin: 12px 0 6px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .card .desc {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .card .price {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d82d2d;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        🍽️ Restaurante do Gian
+    </header>
+
+    <div class="menu-container">
+
+        <h2>🍔 Lanches</h2>
+        <div class="card-grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Hamburguer">
+                <div class="title">Cheeseburger</div>
+                <div class="desc">Pão brioche, carne artesanal, queijo e molho da casa.</div>
+                <div class="price">R$ 18,90</div>
+            </div>
+
+            <div class="card">
+                <img src="xbacon.jpg" alt="X-Bacon">
+                <div class="title">X-Bacon</div>
+                <div class="desc">Hambúrguer, queijo, bacon crocante e molho especial.</div>
+                <div class="price">R$ 24,90</div>
+            </div>
+
+        </div>
+
+        <h2>🍕 Pizzas</h2>
+        <div class="card-grid">
+
+            <div class="card">
+                <img src="pzz-muçarella.jpg" alt="Pizza">
+                <div class="title">Mussarela</div>
+                <div class="desc">Tradicional e deliciosa, feita com queijo 100% mussarela.</div>
+                <div class="price">R$ 32,00</div>
+            </div>
+
+            <div class="card">
+                <img src="cala.jpg" alt="Pizza Calabresa">
+                <div class="title">Calabresa</div>
+                <div class="desc">Calabresa fatiada, cebola, azeitona e muito sabor.</div>
+                <div class="price">R$ 38,00</div>
+            </div>
+
+        </div>
+
+        <h2>🥤 Bebidas</h2>
+        <div class="card-grid">
+
+            <div class="card">
+                <img src="refris.jpg" alt="Refrigerante">
+                <div class="title">Refrigerante Lata</div>
+                <div class="desc">Coca-Cola, Guaraná, Fanta… escolha sua favorita!</div>
+                <div class="price">R$ 6,00</div>
+            </div>
+
+            <div class="card">
+                <img src="sucos.jpg" alt="Suco Natural">
+                <div class="title">Suco Natural</div>
+                <div class="desc">Laranja, limão, maracujá ou abacaxi – fresco na hora.</div>
+                <div class="price">R$ 8,90</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
